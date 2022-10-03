@@ -44,7 +44,7 @@ int main()
     
     // Determine the time it takes for an obect to fall a certain distance. 
     // note: the Empire State Building is 381 m tall. Or the Shanghei Tower?
-    time2Fall(632.0);
+    time2Fall();
     
     // The height of the Burj Khalifa in Dubai is 828 meters
     time2Fall(828.0);
