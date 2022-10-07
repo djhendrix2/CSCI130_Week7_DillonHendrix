@@ -35,7 +35,7 @@ void time(int seconds, int& hours, int& mins, int& secs){
   hours = (seconds / 3600);
   seconds = (seconds%3600);
   mins = (seconds/60);
-  seconds = (seconds%3600);
-  seconds = secs;
+  seconds = (seconds%60);
+  secs = seconds;
   
 }
