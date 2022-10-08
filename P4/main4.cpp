@@ -13,21 +13,37 @@ using namespace std;
 
 /*********** Function Prototypes ***************/
 
+
 /****************** Main ************************/
 int main() {
-  // local variables to main
-  int n = 0;
+  int n, minValue, minValueIndex;
+  cout << "Enter n number of list values: ";
   cin >> n;
+  int index, myList[n];
 
-  int myList[n]; // = {1, 2, -3, 14, 75};
+  for (index = 0; index < n; index++)
+    {
+      cout << "Enter a list value: ";
+      cin >> myList[index];
+    }
+  cout << endl;
 
-  for (int i = 0; i < 5; i++) {
-    // cout << "Input a value for the array: ";
-    cin >> myList[i];
-    
-    // sum = sum + myList[i];
-    // cout << sum << endl;
-  }
+  for (index = 0; index < n; index++)  //Print list values
+    cout << "list location " << index << " is a value of " << myList[index] << endl;
+
+  minValue = myList[0];
+  minValueIndex = minValue - 2;
+  for (index = 0; index < n; index++)
+    {
+      // cout << " " << myList[index];
+      if (minValue > myList[index])
+      minValue = myList[index];
+      // myList[index] = minValue;  // The location of the minimum value hopefully
+    }
+      cout << "\n\nMin value is " << minValue << " and the min value index is " << minValueIndex << endl;
+
+
+  return 0;
 }
 
 /************* Function Definitions ******************/

@@ -12,8 +12,6 @@ using namespace std;
 int firstnum = 10; // declare and initailize a global variable
 void display( );   // function prototype
 
-/*********** Function Prototypes ***************/
-
 /****************** Main ************************/
 int main() {
   int firstnum = 20; // declare and initialize a local variable
