@@ -13,12 +13,12 @@ using namespace std;
 const int ARRAY_SIZE = 5;
 
 /*********** Function Prototypes ***************/
-
+int sumArray(double list[], int listSize);
 /****************** Main ************************/
 int main() {
 
   // Array 1 resistance
-  int resistance[ARRAY_SIZE] = {16, 27, 39, 56, 81};
+  double resistance[ARRAY_SIZE] = {16, 27, 39, 56, 81};
   // compute the sum of resistance
   int sumResistance;
   sumResistance = sumArray(resistance, ARRAY_SIZE);
@@ -26,7 +26,7 @@ int main() {
 
   // Array 2 current
   int i;
-  double current[5];
+  double current[ARRAY_SIZE];
   for (i = 0; i < 5; i++)
     {
       cout << "Enter value for current: ";
@@ -36,7 +36,7 @@ int main() {
   // compute the sum of current
   int sumCurrent = 0;
   sumCurrent = sumArray(current, ARRAY_SIZE);
-  cout << "The sum of listA = " << sumCurrent << endl;
+  cout << "The sum of current = " << sumCurrent << endl;
 
   // Array 3 power
   double power[5];
@@ -49,7 +49,7 @@ int main() {
   // compute the sum of power
   int sumPower = 0;
   sumPower = sumArray(power, ARRAY_SIZE);
-  cout << "The sum of listA = " << sumPower << endl;
+  cout << "The sum of power = " << sumPower << endl;
 
   // Create table using the aquired array values
   
@@ -63,11 +63,16 @@ int main() {
              << left << setw(12) << power[i]
             << endl;
     } 
+  cout << left << setw(15) << "Total: "
+             << left << setw(12) << sumCurrent
+             << left << setw(12) << sumPower
+            << endl;
+  
   return 0;
 }
 
 /************* Function Definitions ******************/
-int sumArray(const int list[], int listSize) {
+int sumArray(double list[], int listSize) {
   int index;
   int sum = 0;
 

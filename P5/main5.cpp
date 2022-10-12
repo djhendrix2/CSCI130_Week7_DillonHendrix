@@ -17,7 +17,11 @@ Last Modified on: 9/2020
 #include <string>
 
 using namespace std;
-
+/******** Global Variables ***********/
+char userPick;
+char computerPick;
+int user;
+int computer;
 /////////////// Prototype Functions ///////////////////////////
 void TranslatePick(int flag_who, char selection);
 char ComputerSelectRPSLK();
@@ -35,17 +39,19 @@ int main() {
   
   // Set up an array to keep track of user wins vs computer wins
   int game = 0;
-  string p[2];
+  int n = 0; // number of times user wants to play
+  
+  string p[n];
  cout << "How many times do you wish to play?" << endl;
+ cin >> n;
+  for (int i = 0; i <= n; i++) {
 
- cin >> game;
-  cout << "Use R (for Rock), P (for Paper), S (for Scissors), ";
-  cout << "L (for Lizard), and K (for Spock)." << endl;
-
+  cout << "Use R (for Rock), P (for Paper), S (for Scissors),";
+  cout << "L (for Lizard), and K (for Spock).\n" << endl;
   // Obtain userPick. Prompt until a valid selection is made.
-  while (valid_pick == false) {
-    cout << "You pick: ";
+    cout << "You pick: \n";
     cin >> userPick;
+  while (valid_pick == false) {
 
     if ((userPick == 'R') || (userPick == 'P') || (userPick == 'S') ||
         (userPick == 'L') || (userPick == 'K')) {
@@ -63,46 +69,51 @@ int main() {
 
 
   // HANDOUT (PART A): Determine the winner of the game.
+
+  string win = "User wins! ";
+  string loss = "Computer wins :(";
+  string tie = "It is a tie. ";
+
   // For Rock
   if ((userPick == 'R') && (computerPick == 'R'))
-    cout << "It is a tie. " << endl;
+    cout << tie << endl;
   else if ((computerPick == 'K') || (computerPick == 'P'))
-    cout << "Computer wins :(" << endl;
-  // else // Win
-  else if ((computerPick == 'S') || (computerPick == 'L')) // win
-    cout << "User wins! " << endl;
+    cout << loss << endl;
+  else if ((computerPick == 'S') || (computerPick == 'L')) 
+    cout << win << endl;
+  
   // For paper
   else if ((userPick == 'P') && (computerPick == 'P'))
-    cout << "It is a tie. " << endl;
+    cout << tie << endl;
   else if ((computerPick == 'L') || (computerPick == 'S'))
-    cout << "Computer wins :( " << endl;
-  // else // Win
-  else if ((computerPick == 'K') || (computerPick == 'R')) // win
-    cout << "User wins! " << endl;
+    cout << loss << endl;
+  else if ((computerPick == 'K') || (computerPick == 'R'))
+    cout << win << endl;
+  
   // For Scissors
   else if ((userPick == 'S') && (computerPick == 'S'))
-    cout << "It is a tie. " << endl;
+    cout << tie << endl;
   else if ((computerPick == 'R') || (computerPick == 'K'))
-    cout << "Computer wins :( " << endl;
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'L') || (computerPick == 'P'))
-    cout << "User wins!" << endl;
+    cout << win << endl;
+  
   // For Lizard
   else if ((userPick == 'L') && (computerPick == 'L'))
-    cout << "It is a tie. " << endl;
+    cout << tie << endl;
   else if ((computerPick == 'S') || (computerPick == 'R'))
-    cout << "Computer wins :( " << endl;
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'K') || (computerPick == 'P'))
-    cout << "User wins! " << endl;
+    cout << win << endl;
+    
   // For Spock
   else if ((userPick == 'K') && (computerPick == 'K'))
-    cout << "It is a tie. " << endl;
+    cout << tie << endl;
   else if ((computerPick == 'L') || (computerPick == 'P'))
-    cout << "Computer wins :( " << endl;
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'R') || (computerPick == 'S'))
-    cout << "User wins! " << endl;
+    cout << win << endl;
+    
   else // Somethings wrong
     cout << "Something is wrong try again. " << endl;
 
@@ -112,6 +123,9 @@ int main() {
   char randCelebratoryChar;
   int randCelebratory;
 
+  // Part D Create and array to display the results of multiple games
+  
+  
   srand(time(NULL)); // initialize random seed.
   randCelebratory = rand() % 5;
 
@@ -139,8 +153,10 @@ int main() {
   default:
     cout << "Take the L the computer wins:( " << endl;
   }
-
-  return randCelebratoryChar;
+  
+  //return randCelebratoryChar;
+    }
+  return 0;
 }
 
 /////////////// User-Created Functions ////////////////////////////////////////
@@ -173,8 +189,9 @@ void TranslatePick(int flag_who, char selection) {
     cout << who_text << " selected Spock." << endl;
   else // something is wrong
     cout << "Check code for errors. Message from TranslatePick fcn." << endl;
-
+  
   return;
+  
 }
 
 /* Descprition: This function is used to make a random character selection in
@@ -212,4 +229,7 @@ char ComputerSelectRPSLK() {
   }
 
   return randPickChar;
+  
 }
+
+// void fillArray(int list[], int listSize) {
