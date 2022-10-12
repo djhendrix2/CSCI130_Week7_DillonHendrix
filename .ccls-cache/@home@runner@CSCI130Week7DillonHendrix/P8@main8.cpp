@@ -16,7 +16,31 @@ using namespace std;
 /****************** Main ************************/
 int main() {
 
-  // local variables to main
+  // Initialize variables
+  int C = 0;  // The maximum value that can be input by user or less
+  int N;      // Number of values to input
+  int i;
+  // Prompt user for N input 
+  cin >> N;
+  // Prompt user for C input
+  cin >> C;
+  
+  // Arrays required
+  int Sort[N];
+
+  // Set C relation to the sort array
+  if (C >= Sort[i]){
+    cout << "The value inserted is valid. ";
+  }
+  else {
+    cout << "Invalid input value to be sorted. Try again.";
+  }
+    for (i = 0; i < N; i++)
+    {
+      cout << "Enter value for current: ";
+      cin >> Sort[i];
+    }
+  
   
 }
 
