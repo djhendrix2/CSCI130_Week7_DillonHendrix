@@ -23,8 +23,8 @@ char computerPick;
 int user;
 int computer;
 /////////////// Prototype Functions ///////////////////////////
-void TranslatePick(int flag_who, char selection);
-char ComputerSelectRPSLK();
+void TranslatePick(int flag_who, char selection, char choice[5]);
+char ComputerSelectRPSLK(char choice[5]);
 
 ///////////////// MAIN //////////////////////////////////////
 int main() {
@@ -38,15 +38,22 @@ int main() {
   cout << "It's time to play Rock, Paper, Scissors, Lizard, Spock!" << endl;
   
 /********** User Prompt for Games Played **************/
- cout << "How many times do you wish to play?" << endl;
- cin >> n;
   
 /*********** Initailize array variables ***************/
   int game = 0;
   int n = 0; // number of times user wants to play
+ cout << "How many times do you wish to play?" << endl;
+ cin >> n;
 
 /*********** The array to take in loop data ************/
-  string gamesPlayedData[n];
+ // string gamesPlayedData[n];
+  char choice[5];
+  choice[0]='R';
+  choice[1]='P';
+  choice[2]='S';
+  choice[3]='L';
+  choice[4]='K';
+
 
 /********* The loop that aquires game data **************/
   for (int i = 0; i <= n; i++) {
@@ -68,11 +75,11 @@ int main() {
   }
 
 /*********** Repeat selection back to user ***************/
-  TranslatePick(0, userPick);
+  TranslatePick(0, userPick, choice);
 
 /****** Obtain computer selection and inform user *******/
-  computerPick = ComputerSelectRPSLK();
-  TranslatePick(1, computerPick); // Inform user comp pick
+  computerPick = ComputerSelectRPSLK(choice);
+  TranslatePick(1, computerPick, choice); // Inform user comp pick
 
 /*************** Determine game winner *******************/
   // HANDOUT (PART A): Determine the winner of the game.
@@ -82,43 +89,43 @@ int main() {
   string tie = "It is a tie. ";
 
   // For Rock
-  if ((userPick == 'R') && (computerPick == 'R'))
+  if ((userPick == choice[0]) && (computerPick == choice[0]))
     cout << tie << endl;
-  else if ((computerPick == 'K') || (computerPick == 'P'))
+  else if ((computerPick == choice[4]) || (computerPick == choice[1]))
     cout << loss << endl;
-  else if ((computerPick == 'S') || (computerPick == 'L')) 
+  else if ((computerPick == choice[2]) || (computerPick == choice[3])) 
     cout << win << endl;
   
   // For paper
-  else if ((userPick == 'P') && (computerPick == 'P'))
+  else if ((userPick == choice[1]) && (computerPick == choice[1]))
     cout << tie << endl;
-  else if ((computerPick == 'L') || (computerPick == 'S'))
+  else if ((computerPick == choice[3]) || (computerPick == choice[2]))
     cout << loss << endl;
-  else if ((computerPick == 'K') || (computerPick == 'R'))
+  else if ((computerPick == choice[4]) || (computerPick == choice[0]))
     cout << win << endl;
   
   // For Scissors
-  else if ((userPick == 'S') && (computerPick == 'S'))
+  else if ((userPick == choice[2]) && (computerPick == choice[2]))
     cout << tie << endl;
-  else if ((computerPick == 'R') || (computerPick == 'K'))
+  else if ((computerPick == choice[0]) || (computerPick == choice[4]))
     cout << loss << endl;
-  else if ((computerPick == 'L') || (computerPick == 'P'))
+  else if ((computerPick == choice[3]) || (computerPick == choice[1]))
     cout << win << endl;
   
   // For Lizard
-  else if ((userPick == 'L') && (computerPick == 'L'))
+  else if ((userPick == choice[3]) && (computerPick == choice[3]))
     cout << tie << endl;
-  else if ((computerPick == 'S') || (computerPick == 'R'))
+  else if ((computerPick == choice[2]) || (computerPick == choice[0]))
     cout << loss << endl;
-  else if ((computerPick == 'K') || (computerPick == 'P'))
+  else if ((computerPick == choice[4]) || (computerPick == choice[1]))
     cout << win << endl;
     
   // For Spock
-  else if ((userPick == 'K') && (computerPick == 'K'))
+  else if ((userPick == choice[4]) && (computerPick == choice[4]))
     cout << tie << endl;
-  else if ((computerPick == 'L') || (computerPick == 'P'))
+  else if ((computerPick == choice[3]) || (computerPick == choice[1]))
     cout << loss << endl;
-  else if ((computerPick == 'R') || (computerPick == 'S'))
+  else if ((computerPick == choice[0]) || (computerPick == choice[2]))
     cout << win << endl;
     
   else // Somethings wrong
@@ -167,7 +174,7 @@ int main() {
 /* 
 Descprition: This function is used to translate the character selection to a statement which is displayed to the user.
 Parameters: flag_who is an integer which is used to indicate if the computer or the user made the choice. Selection is one of the 5 valid character selections */
-void TranslatePick(int flag_who, char selection) {
+void TranslatePick(int flag_who, char selection, char choice[5]) {
   // declare local function variables
   string who_text;
 
@@ -178,15 +185,15 @@ void TranslatePick(int flag_who, char selection) {
     who_text = "The Computer";
 
   // display output where the char selection is translated into words
-  if (selection == 'R')
+  if (selection == choice[0])
     cout << who_text << " selected Rock." << endl;
-  else if (selection == 'P')
+  else if (selection == choice[1])
     cout << who_text << " selected Paper." << endl;
-  else if (selection == 'S')
+  else if (selection == choice[2])
     cout << who_text << " selected Scissors." << endl;
-  else if (selection == 'L')
+  else if (selection == choice[3])
     cout << who_text << " selected Lizard." << endl;
-  else if (selection == 'K')
+  else if (selection == choice[4])
     cout << who_text << " selected Spock." << endl;
   else // something is wrong
     cout << "Check code for errors. Message from TranslatePick fcn." << endl;
@@ -197,7 +204,7 @@ void TranslatePick(int flag_who, char selection) {
 
 /* Descprition: This function is used to make a random character selection in the game Rock, Paper, Scissors, Lizard, Spock for the computer 
 Parameters: there are no inputs */
-char ComputerSelectRPSLK() {
+char ComputerSelectRPSLK(char choice[5]) {
   // declare local function variables
   char randPickChar;
   int randPick;
@@ -210,19 +217,19 @@ char ComputerSelectRPSLK() {
   // assign random number to letter
   switch (randPick) {
   case 0:
-    randPickChar = 'R';
+    randPickChar = choice[0];
     break;
   case 1:
-    randPickChar = 'P';
+    randPickChar = choice[1];
     break;
   case 2:
-    randPickChar = 'S';
+    randPickChar = choice[2];
     break;
   case 3:
-    randPickChar = 'L';
+    randPickChar = choice[3];
     break;
   case 4:
-    randPickChar = 'K';
+    randPickChar = choice[4];
     break;
   default:
     cout << "Error in the function ComputerSelectRPSLK. " << endl;
