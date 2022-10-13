@@ -6,7 +6,7 @@ Date: 10-05-22
 
 /*********************************************************
 Description: Rock, Paper, Scissors, Lizard, Spock Game
-             This game is unfinished. Follow along with
+            This game is unfinished. Follow along with
 CSCI130_RockPaperScissors2.pdf to complete the game. Last Modified by: Dr. M
 Last Modified on: 9/2020
 ***********************************************************/
