@@ -44,16 +44,14 @@ int main() {
   string p[n];
  cout << "How many times do you wish to play?" << endl;
  cin >> n;
-  cout << "Use R (for Rock), P (for Paper), S (for Scissors), ";
-  cout << "L (for Lizard), and K (for Spock)." << endl;
-
-  
   for (int i = 0; i <= n; i++) {
 
+  cout << "Use R (for Rock), P (for Paper), S (for Scissors),";
+  cout << "L (for Lizard), and K (for Spock).\n" << endl;
   // Obtain userPick. Prompt until a valid selection is made.
-  while (valid_pick == false) {
-    cout << "You pick: ";
+    cout << "You pick: \n";
     cin >> userPick;
+  while (valid_pick == false) {
 
     if ((userPick == 'R') || (userPick == 'P') || (userPick == 'S') ||
         (userPick == 'L') || (userPick == 'K')) {
@@ -72,67 +70,49 @@ int main() {
 
   // HANDOUT (PART A): Determine the winner of the game.
 
-  string computer;
-  string user;
-  
+  string win = "User wins! ";
+  string loss = "Computer wins :(";
+  string tie = "It is a tie. ";
+
   // For Rock
   if ((userPick == 'R') && (computerPick == 'R'))
-    cout << "It is a tie. " << endl;
-
+    cout << tie << endl;
   else if ((computerPick == 'K') || (computerPick == 'P'))
-    cout << "Computer wins :(" << endl;
-   
+    cout << loss << endl;
   else if ((computerPick == 'S') || (computerPick == 'L')) 
-    cout << "User wins! " << endl;
+    cout << win << endl;
   
   // For paper
   else if ((userPick == 'P') && (computerPick == 'P'))
-    cout << "It is a tie. " << endl;
-   
+    cout << tie << endl;
   else if ((computerPick == 'L') || (computerPick == 'S'))
-    cout << "Computer wins :( " << endl;
-   
+    cout << loss << endl;
   else if ((computerPick == 'K') || (computerPick == 'R'))
-    cout << "User wins! " << endl;
+    cout << win << endl;
   
   // For Scissors
   else if ((userPick == 'S') && (computerPick == 'S'))
-    cout << "It is a tie. " << endl;
-  
-
+    cout << tie << endl;
   else if ((computerPick == 'R') || (computerPick == 'K'))
-    cout << "Computer wins :( " << endl;
-  
-  
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'L') || (computerPick == 'P'))
-    cout << "User wins!" << endl;
-  
+    cout << win << endl;
   
   // For Lizard
   else if ((userPick == 'L') && (computerPick == 'L'))
-    cout << "It is a tie. " << endl;
-   
-  
+    cout << tie << endl;
   else if ((computerPick == 'S') || (computerPick == 'R'))
-    cout << "Computer wins :( " << endl;
-   
-  
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'K') || (computerPick == 'P'))
-    cout << "User wins! " << endl;
+    cout << win << endl;
     
-  
   // For Spock
   else if ((userPick == 'K') && (computerPick == 'K'))
-    cout << "It is a tie. " << endl;
-    
+    cout << tie << endl;
   else if ((computerPick == 'L') || (computerPick == 'P'))
-    cout << "Computer wins :( " << endl;
-    
-  // else // win
+    cout << loss << endl;
   else if ((computerPick == 'R') || (computerPick == 'S'))
-    cout << "User wins! " << endl;
+    cout << win << endl;
     
   else // Somethings wrong
     cout << "Something is wrong try again. " << endl;

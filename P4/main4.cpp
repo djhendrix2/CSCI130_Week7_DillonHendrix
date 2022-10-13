@@ -34,7 +34,6 @@ int main() {
     cin >> myList[index];
     }
   
-
     minJunk = myList[0];
     index = 0;
 

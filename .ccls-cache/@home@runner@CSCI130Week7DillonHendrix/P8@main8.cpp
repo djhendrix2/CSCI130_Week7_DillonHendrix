@@ -20,15 +20,16 @@ int main() {
   int C = 0;  // The maximum value that can be input by user or less
   int N;      // Number of values to input
   int i;
-  const int Array_size = n;
+  const int Array_size = N;
   int list[N];
-  int freqVals[OccurSize];
-  int numOccur[OccurSize];
+  int freqVals[Array_size];
+  int numOccur[Array_size];
   // Prompt user for N input 
   cin >> N;
   // Prompt user for C input
   cin >> C;
-  
+// array [];
+  for (i = 0; i < C; i++)
   // Arrays required
   cout << "The number of occurances are (after sorting): ";
   printArray(numOccur, OccurSize);

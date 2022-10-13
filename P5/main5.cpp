@@ -28,46 +28,53 @@ char ComputerSelectRPSLK();
 
 ///////////////// MAIN //////////////////////////////////////
 int main() {
-  // declare vars
+/**************** Variables declared *******************/
   char userPick; // user's selection for game
   bool valid_pick =
-      false;         // flag controlled while loop for obtaining user input
+      false;       // flag controlled while loop for obtaining user input
   char computerPick; // randomly selected computer selection for game
 
-  // Display rules of the game.
+/********** Display rules of the game. *******************/
   cout << "It's time to play Rock, Paper, Scissors, Lizard, Spock!" << endl;
   
-  // Set up an array to keep track of user wins vs computer wins
-  int game = 0;
-  int n = 0; // number of times user wants to play
-  
-  string p[n];
+/********** User Prompt for Games Played **************/
  cout << "How many times do you wish to play?" << endl;
  cin >> n;
+  
+/*********** Initailize array variables ***************/
+  int game = 0;
+  int n = 0; // number of times user wants to play
+
+/*********** The array to take in loop data ************/
+  string gamesPlayedData[n];
+
+/********* The loop that aquires game data **************/
   for (int i = 0; i <= n; i++) {
 
+/******** Inform user of the rules of the game *********/
   cout << "Use R (for Rock), P (for Paper), S (for Scissors),";
   cout << "L (for Lizard), and K (for Spock).\n" << endl;
-  // Obtain userPick. Prompt until a valid selection is made.
+
+/**** Prompt user for input and continue until valide input entry  ***/  
     cout << "You pick: \n";
     cin >> userPick;
   while (valid_pick == false) {
 
-    if ((userPick == 'R') || (userPick == 'P') || (userPick == 'S') ||
-        (userPick == 'L') || (userPick == 'K')) {
+/***************** Process user pick *********************/
+    if ((userPick == 'R') || (userPick == 'P') || (userPick == 'S') || (userPick == 'L') || (userPick == 'K')) {
       valid_pick = true;
     } else
       cout << "Invalid Selection. Try again. " << endl;
   }
 
-  // Repeat selection back to user.
+/*********** Repeat selection back to user ***************/
   TranslatePick(0, userPick);
 
-  // Obtain computer selection.
+/****** Obtain computer selection and inform user *******/
   computerPick = ComputerSelectRPSLK();
-  TranslatePick(1, computerPick); // Inform user of computer selection
+  TranslatePick(1, computerPick); // Inform user comp pick
 
-
+/*************** Determine game winner *******************/
   // HANDOUT (PART A): Determine the winner of the game.
 
   string win = "User wins! ";
@@ -119,53 +126,47 @@ int main() {
 
   // HANDOUT (PART B): Inform the user who won.
 
-  // HANDOUT (PART C): Randomly display celebratory messages if user won.
+/********** Celebratory Message if user wins *************/ 
+  // HANDOUT (PART C): Randomly display celebratory    messages if user won.
+  // initalized celebration variables
   char randCelebratoryChar;
   int randCelebratory;
 
-  // Part D Create and array to display the results of multiple games
-  
-  
+  // random number generator
   srand(time(NULL)); // initialize random seed.
   randCelebratory = rand() % 5;
 
+  // random celebration switch
   switch (randCelebratory) {
 
   case 0:
     cout << "You win! Nice work!" << endl;
     break;
-
   case 1:
     cout << "Good stuff g. " << endl;
     break;
-
   case 2:
     cout << "You dont suck! " << endl;
     break;
-
   case 3:
     cout << "Dubs for you!! " << endl;
     break;
-
   case 5:
     cout << "Thata baby. You win! " << endl;
     break;
   default:
     cout << "Take the L the computer wins:( " << endl;
   }
-  
   //return randCelebratoryChar;
     }
   return 0;
 }
 
-/////////////// User-Created Functions ////////////////////////////////////////
+/************ User-Created Functions ******************/
 
-/* Descprition: This function is used to translate the character selection to a
-        statement which is displayed to the user.
-   Parameters:  flag_who is an integer which is used to indicate if the computer
-                         or the user made the choice.
-                selection is one of the 5 valid character selections  */
+/* 
+Descprition: This function is used to translate the character selection to a statement which is displayed to the user.
+Parameters: flag_who is an integer which is used to indicate if the computer or the user made the choice. Selection is one of the 5 valid character selections */
 void TranslatePick(int flag_who, char selection) {
   // declare local function variables
   string who_text;
@@ -194,9 +195,8 @@ void TranslatePick(int flag_who, char selection) {
   
 }
 
-/* Descprition: This function is used to make a random character selection in
-   the game Rock, Paper, Scissors, Lizard, Spock for the computer Parameters:
-   there are no inputs */
+/* Descprition: This function is used to make a random character selection in the game Rock, Paper, Scissors, Lizard, Spock for the computer 
+Parameters: there are no inputs */
 char ComputerSelectRPSLK() {
   // declare local function variables
   char randPickChar;
@@ -232,4 +232,4 @@ char ComputerSelectRPSLK() {
   
 }
 
-// void fillArray(int list[], int listSize) {
+
