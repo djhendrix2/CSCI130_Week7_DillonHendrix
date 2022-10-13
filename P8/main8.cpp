@@ -13,6 +13,8 @@ using namespace std;
 
 /*********** Function Prototypes ********************/
 int OccurArray(int array[], int n, int x);
+void selectionSort(int a[], int n);
+
 /********************* Main *************************/
 int main() {
 
@@ -54,10 +56,18 @@ int main() {
     cout << "Original array: ";
     for (int i=0; i < n; i++) 
     cout << numsOccur[i] <<" ";
-    int x = 7;
-    cout <<"\nNumber of occurrences of 7 : " << OccurArray (numsOccur, n, x);
-
+    int x = 2;
+    cout <<"\nNumber of occurrences of 2: " << OccurArray (numsOccur, n, x);
+    int y = 1;
+    cout <<"\nNumber of occurrences of 1: " << OccurArray (numsOccur, n, y);
+    int z = 3;
+    cout <<"\nNumber of occurrences of 3: " << OccurArray (numsOccur, n, z);
   
+  selectionSort(numsOccur, N);
+   printf("\nSorted array is: \n");
+   for (i = 0; i < N; i++)
+   cout<< numsOccur[i] <<" ";
+   return 0;
   return 0;
 }
 
@@ -73,6 +83,16 @@ int OccurArray(int array[], int n, int x)
     return result;
 } 
 
-
-
+void selectionSort(int array[], int ARRAY_SIZE) {
+   int i, j, max, temp;
+   for (i = 0; i < ARRAY_SIZE - 1; i++) {
+      max = i;
+      for (j = i + 1; j < ARRAY_SIZE; j++)
+      if (array[j] > array[max])
+      max = j;
+      temp = array[i];
+      array[i] = array[max];
+      array[max] = temp;
+   }
+  }
 // findDistinct(list, freqVals, length)
